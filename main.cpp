@@ -1,6 +1,6 @@
 //*********************************************************************
 //  Minicurso: Computacao Grafica usando OpenGL
-//  Autor: Prof. Laurindo de Sousa Britto Neto
+//  Autor: João Lucas S. Mota
 //*********************************************************************
 
 /* Inclui os headers do OpenGL, GLU, e GLUT */
@@ -52,7 +52,7 @@ int main(int argc, char** argv){
     /* Funcao com alguns comandos para a inicializacao do OpenGL; */
     init ();
 
-    /* define as func�es de callback */
+    /* define as funcões de callback */
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
     glutKeyboardFunc(keyboard);
@@ -72,7 +72,7 @@ void init(void){
 }
 
 void reshape (int w, int h){
-    /* muda para o modo GL_PROJECTION e reinicia a projec��o */
+    /* muda para o modo GL_PROJECTION e reinicia a projecção */
     glMatrixMode (GL_PROJECTION);
     glLoadIdentity();
 
@@ -80,32 +80,32 @@ void reshape (int w, int h){
     glViewport (0, 0, (GLsizei) w, (GLsizei) h);
 
     /* Define a forma do "viewing volume" para termos               *
-     * uma projec��o de perspectiva (3D).                           *
+     * uma projecção de perspectiva (3D).                           *
      * gluPerpective(angulo,aspecto,ponto_proximo, ponto distante); */
     gluPerspective(60, (float)w/(float)h, 1.0, 20.0);
-    gluLookAt(0.0,0.0,5.0, 	// posi��o da c�mera (olho) 
+    gluLookAt(0.0,0.0,5.0, 	// posição da câmera (olho) 
 			  0.0,0.0,0.0, 	// centro da cena
-			  0.0,1.0,0.0); // dire��o de cima 
-    /* muda para o modo GL_MODELVIEW (n�o pretendemos alterar a projec��o
+			  0.0,1.0,0.0); // direção de cima 
+    /* muda para o modo GL_MODELVIEW (não pretendemos alterar a projecção
      * quando estivermos a desenhar a tela) */
     glMatrixMode (GL_MODELVIEW);
 }
 
 void keyboard (unsigned char key, int x, int y){
 	switch (key) {
-		case 'x': // sentido anti-hor�rio
+		case 'x': // sentido anti-horário
 			eixo_x = (eixo_x + 5) % 360;
 			glutPostRedisplay();
 		break;
-		case 'X': // sentido hor�rio
+		case 'X': // sentido horário
 			eixo_x = (eixo_x - 5) % 360;
 			glutPostRedisplay();
 		break;
-		case 'y': // sentido anti-hor�rio
+		case 'y': // sentido anti-horário
 			eixo_y = (eixo_y + 5) % 360;
 			glutPostRedisplay();
 		break;
-		case 'Y': // sentido hor�rio
+		case 'Y': // sentido horário
 			eixo_y = (eixo_y - 5) % 360;
 			glutPostRedisplay();
 		break;
