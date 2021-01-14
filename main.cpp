@@ -1,6 +1,6 @@
 //*********************************************************************
 //  Minicurso: Computacao Grafica usando OpenGL
-//  Autor: João Lucas S. Mota
+//  Autor: Prof. Laurindo de Sousa Britto Neto
 //*********************************************************************
 
 /* Inclui os headers do OpenGL, GLU, e GLUT */
@@ -16,8 +16,6 @@
 #define ESC 27
 
 static int eixo_x = 0, eixo_y=0;
-float luzX = 0.7f, luzY = 0.75f, luzZ = 8.5f;
-GLfloat light0_position[] = {luzX, luzY, luzZ, 1.0f};
 
 GLMmodel * pmodel = NULL;
 
@@ -54,7 +52,7 @@ int main(int argc, char** argv){
     /* Funcao com alguns comandos para a inicializacao do OpenGL; */
     init ();
 
-    /* define as funcões de callback */
+    /* define as func�es de callback */
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
     glutKeyboardFunc(keyboard);
@@ -67,26 +65,14 @@ int main(int argc, char** argv){
 void init(void){
    // selecionar cor de fundo (preto)
    glClearColor (0.2, 0.2, 0.2, 0.0);
-
    glEnable(GL_LIGHT0);                   // habilita luz 0
    glEnable(GL_COLOR_MATERIAL);           // Utiliza cor do objeto como material
-   glColorMaterial(GL_FRONT_AND_BACK, GL_DIFFUSE);
-
-   glLightfv(GL_LIGHT0, GL_POSITION, light0_position);
-
-	glEnable(GL_LIGHTING);                 // Habilita luz
-	glEnable(GL_DEPTH_TEST);               // Habilita Z-buffer
-	glEnable(GL_CULL_FACE);                // Habilita Backface-Culling
-
-   glEnable(GL_LIGHT0);
-   glLightfv(GL_LIGHT0, GL_POSITION, light0_position);
-   glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION,0.0f);
-   glLightf(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, 0.0f);
-   glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION , 1.0f);
+   glEnable(GL_LIGHTING);                 // Habilita luz
+   glEnable(GL_DEPTH_TEST);               // Habilita Z-buffer
 }
 
 void reshape (int w, int h){
-    /* muda para o modo GL_PROJECTION e reinicia a projecção */
+    /* muda para o modo GL_PROJECTION e reinicia a projec��o */
     glMatrixMode (GL_PROJECTION);
     glLoadIdentity();
 
@@ -94,32 +80,32 @@ void reshape (int w, int h){
     glViewport (0, 0, (GLsizei) w, (GLsizei) h);
 
     /* Define a forma do "viewing volume" para termos               *
-     * uma projecção de perspectiva (3D).                           *
+     * uma projec��o de perspectiva (3D).                           *
      * gluPerpective(angulo,aspecto,ponto_proximo, ponto distante); */
     gluPerspective(60, (float)w/(float)h, 1.0, 20.0);
-    gluLookAt(0.0,0.0,5.0, 	// posição da câmera (olho) 
+    gluLookAt(0.0,0.0,5.0, 	// posi��o da c�mera (olho) 
 			  0.0,0.0,0.0, 	// centro da cena
-			  0.0,1.0,0.0); // direção de cima 
-    /* muda para o modo GL_MODELVIEW (não pretendemos alterar a projecção
+			  0.0,1.0,0.0); // dire��o de cima 
+    /* muda para o modo GL_MODELVIEW (n�o pretendemos alterar a projec��o
      * quando estivermos a desenhar a tela) */
     glMatrixMode (GL_MODELVIEW);
 }
 
 void keyboard (unsigned char key, int x, int y){
 	switch (key) {
-		case 'x': // sentido anti-horário
+		case 'x': // sentido anti-hor�rio
 			eixo_x = (eixo_x + 5) % 360;
 			glutPostRedisplay();
 		break;
-		case 'X': // sentido horário
+		case 'X': // sentido hor�rio
 			eixo_x = (eixo_x - 5) % 360;
 			glutPostRedisplay();
 		break;
-		case 'y': // sentido anti-horário
+		case 'y': // sentido anti-hor�rio
 			eixo_y = (eixo_y + 5) % 360;
 			glutPostRedisplay();
 		break;
-		case 'Y': // sentido horário
+		case 'Y': // sentido hor�rio
 			eixo_y = (eixo_y - 5) % 360;
 			glutPostRedisplay();
 		break;
