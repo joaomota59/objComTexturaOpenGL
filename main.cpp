@@ -27,7 +27,7 @@ void reshape (int w, int h);
 void drawModel(void) {
 
 	if (!pmodel) {
-		pmodel = glmReadOBJ("data/Fountain_2Tier.obj");
+		pmodel = glmReadOBJ("data/al.obj");
 		if (!pmodel)
 			exit(0);
 		glmUnitize(pmodel);
