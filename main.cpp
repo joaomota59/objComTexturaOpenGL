@@ -27,7 +27,7 @@ void reshape (int w, int h);
 void drawModel(void) {
 
 	if (!pmodel) {
-		pmodel = glmReadOBJ("porsche.obj");
+		pmodel = glmReadOBJ("data/Fountain_2Tier.obj");
 		if (!pmodel)
 			exit(0);
 		glmUnitize(pmodel);
@@ -63,8 +63,8 @@ int main(int argc, char** argv){
 
 /* Funcao com alguns comandos para a inicializacao do OpenGL; */
 void init(void){
-   // selecionar cor de fundo (preto)
-   glClearColor (0.2, 0.2, 0.2, 0.0);
+   // selecionar cor de fundo (branco)
+   glClearColor (1.0, 1.0, 1.0, 0.0);
    glEnable(GL_LIGHT0);                   // habilita luz 0
    glEnable(GL_COLOR_MATERIAL);           // Utiliza cor do objeto como material
    glEnable(GL_LIGHTING);                 // Habilita luz
